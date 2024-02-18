@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: spring-petclinic
+    runtime: docker
+    region: oregon
+    plan: starter
+    envVars:
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: spring-petclinic-pg
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: spring-petclinic-pg
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: spring-petclinic-pg
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: spring-petclinic-pg
+          property: user
+      - key: POSTGRES_PASS
+        fromDatabase:
+          name: spring-petclinic-pg
+          property: password
+
+databases:
+  - name: spring-petclinic-pg
+    region: oregon
+    plan: starter
+    databaseName: spring-petclinic
+    user: spring-petclinic
