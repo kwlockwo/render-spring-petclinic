@@ -30,5 +30,5 @@ databases:
   - name: spring-petclinic-pg
     region: oregon
     plan: starter
-    databaseName: spring-petclinic
-    user: spring-petclinic
+    databaseName: spring_petclinic
+    user: spring_petclinic
