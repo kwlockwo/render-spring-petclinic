@@ -11,4 +11,4 @@ RUN ./mvnw clean package -DskipTests
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /service
 COPY --from=build /service/target/spring-petclinic-*.jar spring-petclinic.jar
-CMD ["java", "-Dspring-boot.run.profiles=postgres", "-jar", "/service/spring-petclinic.jar"]
+CMD ["java", "-Dspring.profiles.active=postgres", "-jar", "/service/spring-petclinic.jar"]
