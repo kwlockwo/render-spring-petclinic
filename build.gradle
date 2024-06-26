@@ -1,8 +1,9 @@
 plugins {
   id 'java'
-  id 'org.springframework.boot' version '3.2.0'
-  id 'io.spring.dependency-management' version '1.1.4'
-  id 'org.graalvm.buildtools.native' version '0.9.28'
+  id 'org.springframework.boot' version '3.3.0'
+  id 'io.spring.dependency-management' version '1.1.5'
+  id 'org.graalvm.buildtools.native' version '0.10.2'
+  id 'org.cyclonedx.bom' version '1.8.2'
   id 'io.spring.javaformat' version '0.0.41'
   id "io.spring.nohttp" version "0.0.11"
 }
@@ -14,15 +15,18 @@ apply plugin: 'io.spring.javaformat'
 gradle.startParameter.excludedTaskNames += [ "checkFormatAot", "checkFormatAotTest" ]
 
 group = 'org.springframework.samples'
-version = '3.2.0'
-sourceCompatibility = '17'
+version = '3.3.0'
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_17
+}
 
 repositories {
   mavenCentral()
 }
 
 ext.webjarsFontawesomeVersion = "4.7.0"
-ext.webjarsBootstrapVersion = "5.3.2"
+ext.webjarsBootstrapVersion = "5.3.3"
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-cache'
@@ -46,7 +50,7 @@ dependencies {
   testImplementation 'org.testcontainers:junit-jupiter'
   testImplementation 'org.testcontainers:mysql'
   checkstyle 'io.spring.javaformat:spring-javaformat-checkstyle:0.0.41'
-  checkstyle 'com.puppycrawl.tools:checkstyle:10.12.5'
+  checkstyle 'com.puppycrawl.tools:checkstyle:10.16.0'
 }
 
 tasks.named('test') {
