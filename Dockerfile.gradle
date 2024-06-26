@@ -2,11 +2,11 @@ FROM eclipse-temurin:17-jdk-jammy AS base
 WORKDIR /service
 COPY gradle/ gradle
 COPY gradlew build.gradle settings.gradle ./
-RUN ./gradlew build -x test || return 0
+RUN ./gradlew build -x test --no-daemon || return 0
 COPY src src
 
 FROM base AS build
-RUN ./gradlew clean build -x test
+RUN ./gradlew clean build -x test --no-daemon
 
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /service
